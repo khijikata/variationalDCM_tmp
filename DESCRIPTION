@@ -1,0 +1,20 @@
+Package: variationalDCM
+Type: Package
+Title: performs variational Bayesian estimation for DCMs
+Version: 0.0.0.9000
+Authors@R: c(person("Keiichiro", "Hijikata", email = "", role = c("aut", "cre")),
+    person("Motonori", "Oka", role = "aut"),
+    person("Kazuhiro", "Yamaguchi", role = "aut"),
+    person("Kensuke", "Okada", role = "aut"))
+Description: This package enables fast estimations by variational Bayesian methods for various DCMs and can be applied to large-scale data. We implement five functions that estimate model parameters for 1) deterministic input noisy AND gate (DINA) model, 2) saturated DCM, 3) multiple-choice DINA model, and 4) hidden Markov type longitudinal general DCM and estimates 5) Q-matrix for DINA model.
+Depends: R (>= 4.2.2)
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: mvtnorm
+Suggests: 
+    knitr
+VignetteBuilder: knitr
+RoxygenNote: 7.2.2
+URL: http://github.com/khijikata/variationalDCM
+BugReports: http://github.com/khijikata/variationalDCM/issues
