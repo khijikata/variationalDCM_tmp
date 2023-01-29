@@ -1,2 +1,2 @@
 # variationalDCM_tmp
-An R package "variational" DCM under the review by cran
+An R package "variationalDCM" under the review by cran
