@@ -1,0 +1,83 @@
+---
+title: "variationalDCM vignette"
+author: "Keiichiro Hijikata"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{variationalDCM vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+`variationalDCM` performs recently developed **variational Bayesian estimation** methods for Diagnostic Classification Models (DCMs). This package enables **fast** estimations by variational Bayesian methods for various DCMs and can be applied to **large-scale** data.
+
+# DCMs
+
+DCMs are a class of discrete latent variable models used to reveal students' current learning status on (latent) **attributes**. Attributes are skills required to answer items correctly, and DCMs reveal whether each test taker masters each attribute. Usual DCMs' entries are item response data matrix that contains only 0 (wrong answer) and 1 (right answer) and binary matrix called Q-matrix that represents how the J Items depend on the K latent attributes.
+
+DCMs have a lot of sub-models and we introduce some models related to this package.
+
+## DINA model
+    
+The deterministic input noisy AND gate (DINA) model is one of the most popular DCMs and one of the non-compensatory models, which assume test takers must have mastered all the required latent attributes associated with a particular item in order to respond correctly to that item. 
+
+## Saturated DCM
+The saturated DCM is the generalized model that includes many DCMs such as DINA and DINO model as the special case. 
+So, saturated DCM can be used when relationships among attributes are unknown.
+
+## Multiple choices DINA model
+
+The multiple choices DINA (MC-DINA) model is the generalization of usual DINA model. MC-DINA model assumes the item response data contains polytomous values, in that, test items have multiple options. MC-DINA model , and assumes attributes on each multiple choice option.
+
+## hidden Markov DCM
+
+the hidden Markov DCM (HMDCM) is longitudinal data
+
+# Functions
+
+|Function Name|Functionality|
+|-----|-----|
+|`dina()`|estimates attribute mastery pattern for DINA model|
+|`satu_dcm()`|estimates attribute mastery pattern for saturated DCM|
+|`mcdina()`|estimates attribute mastery pattern for multiple-choice DINA model|
+|`dina_Qest()`|estimates Q-matrix for DINA model|
+|`hmdcm_diff_q()`|for hidden Markov DCM|
+
+detailed explanation of functions such as augument, return and so on is given in .R script of each function. 
+
+# Usage
+
+
+```
+library(variationalDCM) # load the package
+```
+
+
+# Comparison with other R packages
+
+There are some packages for DCMs. We compare our package with a few existing packages such as `GDINA` and `CDM` and illustrate our package `variationalDCM`'s scalability.
+
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+# References
+
+* Yamaguchi, K., & Okada, K. (2020). Variational Bayes Inference for the DINA Model. _Journal of Educational and Behavioral Statistics_, 45(5), 569–597. <doi: https://doi.org/10.3102/1076998620911934>;
+
+* Yamaguchi, K., Okada, K. (2020). Variational Bayes Inference Algorithm for the Saturated Diagnostic Classification Model. _Psychometrika_, 85(4), 973–995. <doi: https://doi.org/10.1007/s11336-020-09739-w>;
+
+* Yamaguchi, K. (2020). Variational Bayesian inference for the multiple-choice DINA model. _Behaviormetrika_, 47(1), 159-187. <doi: https://doi.org/10.1007/s41237-020-00104-w>;
+
+* Oka, M., & Okada, K. (2022). Scalable estimation algorithm for the DINA Q-matrix combining stochastic optimization and variational inference. _Psychometrika_, in press. <doi: 
+https://doi.org/10.48550/arXiv.2105.09495>;
+
+* Yamaguchi, K., & Martinez, A. J. (2021). Variational Bayesian Inference Posterior Approximation Algorithm for Hidden Markov Diagnostic Classification Models. <doi: https://doi.org/10.31234/osf.io/28jkf>
